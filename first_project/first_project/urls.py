@@ -19,5 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/', include('first_app.urls'))
+    path('app/', include('first_app.urls', namespace='first_app')),
 ]
+
+handler404 = 'first_project.views.handler404'
+
