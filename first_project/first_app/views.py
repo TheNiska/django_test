@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from first_app.forms import LogForm
+
 
 def index(request):
     return HttpResponse("Hello. This is the index view of my first app.")
 
-def home(request):
+
+def request_info(request):
     path = request.path
     scheme = request.scheme
     method = request.method
@@ -23,8 +26,10 @@ def home(request):
 
     return HttpResponse(msg, content_type='text/html', charset='utf-8')
 
+
 def pathview(request, name, id):
     return HttpResponse(f"These are path parameters: {name}, {id}")
+
 
 def query_view(request):
     name = request.GET['name']
@@ -32,16 +37,14 @@ def query_view(request):
 
     return HttpResponse(f"These are query parameters: {name}, {id}")
 
-def show_form(request):
+
+def form_view(request):
+    form = LogForm()
+
     if request.method == 'POST':
-        id = request.POST['id']
-        name = request.POST['name']
-        return HttpResponse(f"id: {id}, name: {name}")
-    return render(request, "form.html")
+        form = LogForm(request.POST)
+        if form.is_valid():
+            form.save()
 
-
-
-
-
-
-
+    context = {"form": form}
+    return render(request, "home.html", context)
