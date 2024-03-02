@@ -23,12 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*fxtq80t(o(thagwyl@e9dp6&=v9c!4jhyezcamn0l1!&%56k1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
+# If we want to enable an app, we must write the name of it here
+# Apps are created by 'python manage.py startapp app_name'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Here are project's url patterns
 ROOT_URLCONF = 'first_project.urls'
 
 TEMPLATES = [
@@ -74,6 +78,12 @@ WSGI_APPLICATION = 'first_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+'''
+This attribute is a dictionary that specifies the configuration of one or more
+databases to be used by the current Django application.
+By default, Django uses the SQLite database. Hence, this setting
+has a pre-defined configuration for it.
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

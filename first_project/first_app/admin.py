@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import MenuItem, MenuCategory
+from .models import MenuItem, MenuCategory, Logger
 
 
 # Register your models here.
 admin.site.register(MenuItem)
 admin.site.register(MenuCategory)
-
+admin.site.register(Logger)
