@@ -5,4 +5,5 @@ app_name = 'txtapp'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('info/<str:name>', views.get_info, name='info'),
 ]
