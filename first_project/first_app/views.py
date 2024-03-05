@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.forms import LogForm
+from django.urls import reverse
 
 
 def index(request):
-    return HttpResponse("Hello. This is the index view of my first app.")
+    url = reverse("first_app:index")
+    html = f'''\
+    <h1>Index page of MAINAPP</h1>
+    <p>Some paragraph</p>
+    <p>The path is {url}</p>
+    '''
+    return HttpResponse(html)
 
 
 def request_info(request):
