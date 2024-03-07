@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.forms import LogForm
 from django.urls import reverse
+from django.core.exceptions import PermissionDenied
 
 
 def index(request):
@@ -11,6 +12,15 @@ def index(request):
     <p>Some paragraph</p>
     <p>The path is {url}</p>
     '''
+    if request.user.is_anonymous:
+        raise PermissionDenied()
+    elif request.user.has_perm("first_app.can_change_website"):
+        html += "<p>Есть права на изменение веб-сайта"\
+                f" у {request.user.username}</p>"
+    else:
+        html += "<p>Нет прав на изменение сайта"\
+                f" у {request.user.username}</p>"
+
     return HttpResponse(html)
 
 

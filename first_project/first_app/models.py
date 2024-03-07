@@ -11,6 +11,9 @@ class College(models.Model):
     name = models.CharField(max_length=50)
     website = models.URLField()
 
+    class Meta:
+        permissions = [('can_change_website', 'Can change website')]
+
 
 class Principal(models.Model):
     college_id = models.OneToOneField(College, on_delete=models.CASCADE)
@@ -36,6 +39,9 @@ class Teacher(models.Model):
 class User(models.Model):
     user_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
 
 
 class Articles(models.Model):
