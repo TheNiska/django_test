@@ -1,7 +1,7 @@
-<p>Hello</p>
-
-<form action="" method="POST">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+{% block content %}
+	<h2>This is home page</h2>
+	{% load static %} 
+	<img src="{% static 'first_app/car.jpeg' %}"> 
+	{% include 'partials/_card.html' %}
+{% endblock %}

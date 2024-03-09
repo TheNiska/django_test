@@ -6,6 +6,18 @@ from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
 
+def home(request):
+    return render(request, "home.html", {})
+
+
+def register(request):
+    return render(request, "register.html", {})
+
+
+def login(request):
+    return render(request, "login.html", {})
+
+
 def index(request):
     url = reverse("first_app:index")
     html = f'''\
@@ -65,7 +77,7 @@ def form_view(request):
             form.save()
 
     context = {"form": form}
-    return render(request, "home.html", context)
+    return render(request, "index.html", context)
 
 
 def menu_by_id(request):
