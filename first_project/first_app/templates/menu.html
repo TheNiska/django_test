@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Menu</title>
+	</head>
+	<body>
+		{% if menu %}
+			{% for item in menu %}
+				<p>{{item.menu_item}} : {{item.price}}</p>
+			{% endfor %}
+		{% else %}
+			<p>There is nothing here</p>
+		{% endif %}
+
+	</body>
+</html>

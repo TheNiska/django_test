@@ -9,4 +9,5 @@ urlpatterns = [
         path('pathview/<str:name>/<int:id>', views.pathview, name='pathview'),
         path('queryview/', views.query_view, name='queryview'),
         path('form_view/', views.form_view, name='form_view'),
+        path('menu/', views.menu_by_id, name='menu'),
 ]

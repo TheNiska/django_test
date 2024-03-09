@@ -54,12 +54,18 @@ class Articles(models.Model):
 class MenuCategory(models.Model):
     category_name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"{self.category_name}"
+
 
 class MenuItem(models.Model):
     menu_item = models.CharField(max_length=200)
     price = models.IntegerField(null=False)
     category_id = models.ForeignKey(MenuCategory, on_delete=models.PROTECT,
                                     default=None, related_name='category')
+
+    def __str__(self):
+        return f"{self.menu_item}[{self.price}]"
 
 
 class Logger(models.Model):

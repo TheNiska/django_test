@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.forms import LogForm
+from .models import MenuItem
 from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
@@ -65,3 +66,26 @@ def form_view(request):
 
     context = {"form": form}
     return render(request, "home.html", context)
+
+
+def menu_by_id(request):
+    menu = MenuItem.objects.all()
+    context = {'menu': menu}
+    return render(request, "menu.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
