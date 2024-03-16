@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'first_app',
     'txtapp',
+    'books_api',
 ]
 
 MIDDLEWARE = [
